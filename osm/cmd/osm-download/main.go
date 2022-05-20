@@ -10,15 +10,11 @@ import (
 )
 
 var regions []string = []string{
-	"sudeste-latest.osm.pbf",
-	"sul-latest.osm.pbf",
-	"nordeste-latest.osm.pbf",
-	"norte-latest.osm.pbf",
-	"centro-oeste-latest.osm.pbf",
+	"south-america-latest.osm.pbf",
 }
 
 func download(url string, region string, wg *sync.WaitGroup) {
-	out, err := os.Create("osm/data/" + region)
+	out, err := os.Create("osm/data/pbf/" + region)
 
 	if err != nil {
 		log.Fatal("err =>", err)
@@ -48,7 +44,7 @@ func download(url string, region string, wg *sync.WaitGroup) {
 }
 
 func downloadRegion(region string, wg *sync.WaitGroup) {
-	url := "http://download.geofabrik.de/south-america/brazil/" + region
+	url := "http://download.geofabrik.de/" + region
 	download(url, region, wg)
 }
 

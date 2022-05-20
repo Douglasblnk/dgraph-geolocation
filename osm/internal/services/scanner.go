@@ -17,10 +17,18 @@ func Scanner(file *os.File) {
 	scanner.SkipWays = true
 	scanner.SkipRelations = true
 
+	files, err := CreateFile()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	for scanner.Scan() {
 		switch node := scanner.Object().(type) {
 		case *osm.Node:
-			ScanCountries(node)
+			ScanCountries(node, files.Country)
+			ScanStates(node, files.State)
+			ScanCities(node, files.City)
 		}
 	}
 
@@ -29,5 +37,4 @@ func Scanner(file *os.File) {
 	if scanErr != nil {
 		log.Fatal(scanErr)
 	}
-
 }
