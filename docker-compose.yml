@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.9"
 services:
   zero:
     image: dgraph/dgraph:latest
@@ -15,8 +15,9 @@ services:
       - .data/dgraph-alpha:/dgraph
     ports:
       - 8080:8080
+      - 9080:9080
     restart: on-failure
-    command: dgraph alpha --my=alpha:7080 --zero=zero:5080
+    command: dgraph alpha --my=alpha:7080 --zero=zero:5080 --security whitelist=0.0.0.0/0
   ratel:
     image: dgraph/ratel:latest
     ports:

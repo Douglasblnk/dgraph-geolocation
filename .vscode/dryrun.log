@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/douglasblnk/Documentos/Projects/dgraph-go'
+go run github.com/cosmtrek/air -c geolocation/cmd/.air.toml
+make: Leaving directory '/home/douglasblnk/Documentos/Projects/dgraph-go'
+ 
