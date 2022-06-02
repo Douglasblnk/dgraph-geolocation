@@ -10,7 +10,7 @@ import (
 )
 
 var regions []string = []string{
-	"south-america-latest.osm.pbf",
+	"brazil-latest.osm.pbf",
 }
 
 func download(url string, region string, wg *sync.WaitGroup) {
@@ -44,7 +44,7 @@ func download(url string, region string, wg *sync.WaitGroup) {
 }
 
 func downloadRegion(region string, wg *sync.WaitGroup) {
-	url := "http://download.geofabrik.de/" + region
+	url := "http://download.geofabrik.de/south-america/" + region
 	download(url, region, wg)
 }
 

@@ -15,8 +15,5 @@ func DgraphConnection() (*dgo.Dgraph, func() error) {
 		log.Fatal("err =>", err)
 	}
 
-	dc := api.NewDgraphClient(conn)
-	dg := dgo.NewDgraphClient(dc)
-
-	return dg, conn.Close
+	return dgo.NewDgraphClient(api.NewDgraphClient(conn)), conn.Close
 }

@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 11:56:19 2022
+# Make data base, printed on Thu Jun  2 08:25:00 2022
 
 # Variables
 
@@ -21,7 +19,7 @@ NO_AT_BRIDGE = 1
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/douglasblnk/.gtkrc:/home/douglasblnk/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f82ca3d5-21d4-48e2-b818-bea8533eb1fa.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ecf568f8-372e-4242-b898-d2cb078d1d34.sock
 # environment
 LC_NAME = pt_BR.UTF-8
 # environment
@@ -36,6 +34,8 @@ LC_ADDRESS = pt_BR.UTF-8
 MAKE_COMMAND := make
 # environment
 GTK3_MODULES = xapp-gtk3-module
+# environment
+GOPATH = /home/douglasblnk/go
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -61,7 +61,7 @@ NVM_INC = /home/douglasblnk/.nvm/versions/node/v16.13.2/include/node
 # environment
 VSCODE_CODE_CACHE_PATH = /home/douglasblnk/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
 LANG = C
 # environment
@@ -105,13 +105,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 48721
+VSCODE_PID = 2555
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/douglas-blnk:@/tmp/.ICE-unix/1388,unix/douglas-blnk:/tmp/.ICE-unix/1388
+SESSION_MANAGER = local/douglas-blnk:@/tmp/.ICE-unix/1353,unix/douglas-blnk:/tmp/.ICE-unix/1353
 # automatic
 *F = $(notdir $*)
 # environment
@@ -175,9 +175,9 @@ LOGNAME = douglasblnk
 # environment
 XDG_VTNR = 1
 # makefile
-.DEFAULT_GOAL := geo
+.DEFAULT_GOAL := download
 # environment
-SYSTEMD_EXEC_PID = 1106
+SYSTEMD_EXEC_PID = 1081
 # environment
 DISPLAY = :0
 # environment
@@ -199,6 +199,8 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 NVM_CD_FLAGS = 
 # environment
+GOMODCACHE = /home/douglasblnk/go/pkg/mod
+# environment
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -214,6 +216,8 @@ VSCODE_IPC_HOOK = /run/user/1000/vscode-9f18855b-1.67.2-main.sock
 XDG_SESSION_ID = 2
 # environment
 XCURSOR_SIZE = 24
+# environment
+GOPROXY = https://proxy.golang.org,direct
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -235,7 +239,7 @@ KDE_FULL_SESSION = true
 # environment
 LC_IDENTIFICATION = pt_BR.UTF-8
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=5/141=4%
+# Load=114/1024=11%, Rehash=0, Collisions=5/144=3%
 
 # Pattern-specific Variable Values
 
@@ -243,9 +247,9 @@ LC_IDENTIFICATION = pt_BR.UTF-8
 
 # Directories
 
-# . (device 2050, inode 789021): 11 files, no impossibilities.
+# . (device 2050, inode 789021): 13 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -256,39 +260,31 @@ LC_IDENTIFICATION = pt_BR.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-20 11:31:03.568301242
+#  Last modified 2022-06-01 08:36:52.257431535
 #  File has been updated.
 #  Successfully updated.
+
+insert:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 11):
+	go run database/cmd/main.go
 
 download:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 5):
-	go run osm/cmd/osm-download/main.go
-
-geo:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 2):
-	go run github.com/cosmtrek/air -c geolocation/cmd/.air.toml
+	go run osm/cmd/osm-download/main.go
 
 clear:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
+#  recipe to execute (from 'Makefile', line 8):
 	go run osm/cmd/clear-dgraph/main.go
 
-schemas:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 8):
-	go run osm/cmd/dgraph-schema/main.go
-
- 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -306,23 +302,25 @@ scanner:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 11):
+#  recipe to execute (from 'Makefile', line 5):
 	go run osm/cmd/osm-scanner/main.go
 
 # files hash-table stats:
-# Load=9/1024=1%, Rehash=0, Collisions=0/19=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/18=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 171 B / avg = 8 B
-# current buf: size = 8162 B / used = 171 B / count = 21 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 190 B / avg = 8 B
+# current buf: size = 8162 B / used = 190 B / count = 22 / avg = 8 B
 
-# strcache performance: lookups = 30 / hit rate = 30%
+# strcache performance: lookups = 30 / hit rate = 26%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Fri May 20 11:56:19 2022
+# Load=22/8192=0%, Rehash=0, Collisions=0/30=0%
+# Finished Make data base on Thu Jun  2 08:25:00 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+

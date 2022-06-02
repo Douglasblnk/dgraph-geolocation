@@ -1,0 +1,28 @@
+type Country {
+  Name: String! @id
+  Capital: String!
+  Iso2: String!
+  Iso3: String!
+  Currency: String!
+  CurrencySymbol: String!
+  Emoji: String!
+}
+
+type State {
+  Name: String! @id
+  Latitude: Float!
+  Longitude: Float!
+  CountryCode: String!
+  StateCode: String!
+  Country: Country!
+}
+
+type City {
+  Name: String! @id
+  Latitude: Float!
+  Longitude: Float!
+  Country: Country!
+  CountryCode: String!
+  State: State!
+  StateCode: String!
+}
