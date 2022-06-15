@@ -13,12 +13,12 @@ import (
 )
 
 type States struct {
-	Name        string  `json:"name"`
-	Latitude    float64 `json:"latitude"`
-	Longitude   float64 `json:"longitude"`
-	Country     string  `json:"country"`
-	CountryCode string  `json:"country_code"`
-	StateCode   string  `json:"state_code"`
+	Name        string `json:"name"`
+	Latitude    string `json:"latitude"`
+	Longitude   string `json:"longitude"`
+	CountryName string `json:"country_name"`
+	CountryCode string `json:"country_code"`
+	StateCode   string `json:"state_code"`
 }
 
 func getStates() []*models.State {
@@ -37,7 +37,7 @@ func getStates() []*models.State {
 			Name:        state.Name,
 			Latitude:    state.Latitude,
 			Longitude:   state.Longitude,
-			Country:     state.Country,
+			CountryName: state.CountryName,
 			CountryCode: state.CountryCode,
 			StateCode:   state.StateCode,
 		}

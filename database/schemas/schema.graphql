@@ -1,28 +1,30 @@
 type Country {
-  Name: String! @id
-  Capital: String!
-  Iso2: String!
-  Iso3: String!
-  Currency: String!
-  CurrencySymbol: String!
-  Emoji: String!
+  name: String! @search(by: [trigram, hash])
+  capital: String!
+  iso2: String!
+  iso3: String!
+  currency: String!
+  currency_symbol: String!
+  emoji: String!
+  states: [State!]!
 }
 
 type State {
-  Name: String! @id
-  Latitude: Float!
-  Longitude: Float!
-  CountryCode: String!
-  StateCode: String!
-  Country: Country!
+  name: String! @search(by: [trigram, hash])
+  latitude: String!
+  longitude: String!
+  state_code: String!
+  country_name: String!
+  country_code: String!
+  cities: [City!]!
 }
 
 type City {
-  Name: String! @id
-  Latitude: Float!
-  Longitude: Float!
-  Country: Country!
-  CountryCode: String!
-  State: State!
-  StateCode: String!
+  name: String! @search(by: [trigram, hash])
+  latitude: String!
+  longitude: String!
+  country_name: String!
+  country_code: String!
+  state_name: String!
+  state_code: String!
 }

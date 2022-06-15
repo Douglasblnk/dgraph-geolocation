@@ -1,0 +1,11 @@
+type Country {
+  id: ID!
+  name: String! @search(by: [trigram, hash])
+  states: [State] @hasInverse(field: country)
+}
+
+type State {
+  id: ID!
+  name: String! @search(by: [trigram, hash])
+  country: Country
+}

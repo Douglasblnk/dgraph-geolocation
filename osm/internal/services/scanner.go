@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"os"
 	"runtime"
@@ -14,7 +15,7 @@ func Scanner(file *os.File) {
 	scanner := osmpbf.New(context.Background(), file, runtime.GOMAXPROCS(-1))
 	defer scanner.Close()
 
-	scanner.SkipWays = true
+	// scanner.SkipWays = true
 	scanner.SkipRelations = true
 
 	files, err := CreateFile()
@@ -25,10 +26,20 @@ func Scanner(file *os.File) {
 
 	for scanner.Scan() {
 		switch node := scanner.Object().(type) {
-		case *osm.Node:
-			ScanCountries(node, files.Country)
-			ScanStates(node, files.State)
-			ScanCities(node, files.City)
+		// case *osm.Node:
+		// 	gj, _ := json.MarshalIndent(node, "", " ")
+
+		// 	files.State.WriteString(string(gj))
+		// 	files.State.WriteString("\n")
+
+		// 	ScanCountries(node, files.Country)
+		// 	ScanStates(node, files.State)
+		// 	ScanCities(node, files.City)
+		case *osm.Way:
+			gj, _ := json.MarshalIndent(node, "", " ")
+
+			files.City.WriteString(string(gj))
+			files.City.WriteString("\n")
 		}
 	}
 
